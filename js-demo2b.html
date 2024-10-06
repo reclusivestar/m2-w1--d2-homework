@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>  
+<title>My Second Web Page</title>
+
+<link rel="stylesheet" href="demo.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $("#btn").click(function() {
+            // Create a div container for the table if not already present
+            if (!$('#showTable').length) {
+                $('main').append('<div id="showTable"></div>');
+            }
+
+            // Load the JSON data via AJAX
+            $.getJSON('data.json', function(data) {
+                // Create and append table
+                $('#showTable').append(`
+                    <table>
+                        <caption>${data.title}</caption>
+                        <thead>
+                            <tr>
+                                <th>${data.heading}</th>
+                                <th>${data.head1}</th>
+                                <th>${data.head2}</th>
+                                <th>${data.head3}</th>
+                                <th>${data.head4}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>${data.subheadcal}</td>
+                                <td>${data.cal1}</td>
+                                <td>${data.cal2}</td>
+                                <td>${data.cal3}</td>
+                                <td>${data.cal4}</td>
+                            </tr>
+                            <tr>
+                                <td>${data.subheadfat}</td>
+                                <td>${data.fat1}</td>
+                                <td>${data.fat2}</td>
+                                <td>${data.fat3}</td>
+                                <td>${data.fat4}</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>${data.subheadven}</td>
+                                <td>${data.ven1}</td>
+                                <td>${data.ven2}</td>
+                                <td>${data.ven3}</td>
+                                <td>${data.ven4}</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                `);
+            });
+        });
+    });
+</script>
+</head> 	
+<body>
+
+<div id="container">
+
+<header>My Web Site Brand</header>
+<nav>
+	<ul>
+    <li><a href="js-demo2.html">Home</a></li>
+    <li><a href="js-demo2b.html">About</a></li>
+    <li><a href="js-demo2d.html">Gallery</a></li>
+    <li><a href="js-demo2c.html">Contact</a></li>
+	</ul>
+</nav>
+
+<main>
+  <h1>My Second Heading</h1>
+  <p>My Second paragraph.</p>
+
+    <div id="showTable"></div>
+
+    <input type = "button" id = "btn" value = "Load Data" style="margin-top:20px;" />
+</main>
+
+<footer>&copy; Copyright 2020</footer>
+
+</div>
+
+</body>
+</html>
